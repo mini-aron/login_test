@@ -1,12 +1,12 @@
 import axios from "axios";
 import { useState } from "react";
-import { useLocation, useNavigate, useParams, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 function Main() {
   const [searchParams, setSearchParams] = useSearchParams();
   console.log(searchParams.get("code"))
   const onClick = () => {
-    
+
   }
   return (
     <div>
