@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 
 function Main() {
@@ -16,15 +16,27 @@ function Main() {
       "_self"
     );
   };
-  const getToken = () => {
-    axios.post("https://server.gauth.co.kr/oauth/token", {
-      code: searchParams.get("code"),
-      clientId: String,
-      clientSecret: String,
-      redirectUri: String,
-    });
-  };
-  useEffect(() => {}, [searchParams]);
+  
+  useEffect(() => {
+    const getToken = () => {
+      if (searchParams.get("code") === null) {
+      }else{
+          axios.post("https://server.gauth.co.kr/oauth/token", {
+          'code': searchParams.get("code"),
+          'clientId': clientId,
+          'clientSecret': clientSecret,
+         ' redirectUri': redirect_uri,
+        })
+        .then(function (res) {
+          console.log(res);
+        })
+        .then(function(error){
+          console.log(error);
+        })
+      }
+      console.log("a");
+    };
+    getToken()}, []);
   return (
     <div>
       <button onClick={onClick}>로그인</button>
