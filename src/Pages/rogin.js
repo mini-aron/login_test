@@ -1,12 +1,12 @@
 import axios from "axios";
 import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
-
+import E from "../api/EnvConfig";
 function Main() {
-  const BaseLoginUrl = process.env.REACT_APP_BaseLoginUrl;
-  const clientId = process.env.REACT_APP_CLIENT_ID;
-  const redirect_uri = process.env.REACT_APP_redirect_uri;
-  const clientSecret = process.env.REACT_APP_clientSecret;
+  const BaseLoginUrl = E.BASE_LOGIN_URL;
+  const clientId = E.CLIENT_ID;
+  const redirect_uri = E.REDIRECT_URI;
+  const clientSecret = E.CLIENT_SECRET;
   const [searchParams, setSearchParams] = useSearchParams();
   console.log(searchParams.get("code"));
 
