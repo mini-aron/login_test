@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import E from "../api/EnvConfig";
+import useGauth from "../hooks/useGauth";
 function Main() {
   const BaseLoginUrl = E.BASE_LOGIN_URL;
   const clientId = E.CLIENT_ID;
@@ -22,10 +23,10 @@ function Main() {
       if (searchParams.get("code") === null) {
       }else{
           axios.post("https://server.gauth.co.kr/oauth/token", {
-          'code': searchParams.get("code"),
-          'clientId': clientId,
-          'clientSecret': clientSecret,
-         ' redirectUri': redirect_uri,
+          "code": `${searchParams.get("code")}`,
+          "clientId": `${clientId}`,
+          "clientSecret": `${clientSecret}`,
+          "redirectUri": `${redirect_uri}`,
         })
         .then(function (res) {
           console.log(res);
@@ -34,7 +35,8 @@ function Main() {
           console.log(error);
         })
       }
-      console.log("a");
+      console.log(`
+      ${redirect_uri}`,);
     };
     getToken()}, []);
   return (
